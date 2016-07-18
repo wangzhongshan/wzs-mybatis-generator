@@ -31,4 +31,4 @@ buildNumber.properties
 .mvn/timing.properties
 
 src/main/java/org/wzs/framework/mybatis/generator/
-#jdbc.properties
+jdbc.properties
