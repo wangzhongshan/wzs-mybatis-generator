@@ -6,8 +6,11 @@
 
     <!--添加你本地的驱动jar-->
     <!--<classPathEntry location="/Users/wangzhongshan/wzs_workspace/maven_repo/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar"/>-->
+    <!-- 配置文件路径 -->
+    <properties resource="${mybatis.generator.jdbcConfig.properties}"/>
 
     <context id="contexts" defaultModelType="flat">
+
 
         <!--设置编码格式-->
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -23,7 +26,10 @@
 
 
         <!--添加你的 JDBC 连接信息-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/wzs" userId="wzs" password="wzs"/>
+        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userId}" password="${password}">
+            <!-- 针对oracle数据库 -->
+            <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -48,7 +54,7 @@
 
         <!--指定要生成的表名，可以使用SQL通配符匹配多个表。-->
         <!--用百分号表示生成所有表,可以直接省去一个一个写 <table tableName="%" /> -->
-        <table schema="wzs" tableName="sys_user" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+        <table schema="pay" tableName="t_consume_reward" domainObjectName="ConsumeReward" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
 
