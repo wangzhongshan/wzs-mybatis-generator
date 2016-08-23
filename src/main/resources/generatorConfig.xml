@@ -3,11 +3,10 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-
-    <!--添加你本地的驱动jar-->
-    <!--<classPathEntry location="/Users/wangzhongshan/wzs_workspace/maven_repo/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar"/>-->
     <!-- 配置文件路径 -->
     <properties resource="${mybatis.generator.jdbcConfig.properties}"/>
+    <!--添加你本地的驱动jar-->
+    <!--<classPathEntry location="/Users/wangzhongshan/wzs_workspace/maven_repo/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>-->
 
     <context id="contexts" defaultModelType="flat">
 
@@ -18,6 +17,12 @@
         <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
+
+        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+            <!--<property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+            <!--&lt;!&ndash; caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true &ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="caseSensitive" value="true"/>&ndash;&gt;-->
+        <!--</plugin>-->
 
         <commentGenerator type="Gen.MyCommentGenerator">
             <property name="suppressAllComments" value="true"/>
@@ -36,25 +41,25 @@
         </javaTypeResolver>
 
         <!--要生成的 model 模块位置-->
-        <javaModelGenerator targetPackage="org.wzs.framework.mybatis.generator.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="pers.wzs.springmvc.pojo" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
 
         <!--要生成的 Mapper.xml 文件位置-->
-        <sqlMapGenerator targetPackage="org.wzs.framework.mybatis.generator.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="pers.wzs.springmvc.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!--要生成的 Mapper 接口类-->
-        <javaClientGenerator targetPackage="org.wzs.framework.mybatis.generator.dao" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="pers.wzs.springmvc.mapper" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
 
         <!--指定要生成的表名，可以使用SQL通配符匹配多个表。-->
         <!--用百分号表示生成所有表,可以直接省去一个一个写 <table tableName="%" /> -->
-        <table schema="pay" tableName="t_consume_reward" domainObjectName="ConsumeReward" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+        <table schema="ssm" tableName="role" domainObjectName="Role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
 
