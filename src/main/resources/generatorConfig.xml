@@ -3,26 +3,15 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+    <!--生成普通mapper使用该配置文件-->
     <!-- 配置文件路径 -->
     <properties resource="${mybatis.generator.jdbcConfig.properties}"/>
-    <!--添加你本地的驱动jar-->
-    <!--<classPathEntry location="/Users/wangzhongshan/wzs_workspace/maven_repo/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>-->
-
     <context id="contexts" defaultModelType="flat">
-
-
         <!--设置编码格式-->
         <property name="javaFileEncoding" value="UTF-8"/>
-
         <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
-
-        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
-            <!--<property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
-            <!--&lt;!&ndash; caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true &ndash;&gt;-->
-            <!--&lt;!&ndash;<property name="caseSensitive" value="true"/>&ndash;&gt;-->
-        <!--</plugin>-->
 
         <commentGenerator type="Gen.MyCommentGenerator">
             <property name="suppressAllComments" value="true"/>
@@ -31,9 +20,9 @@
 
 
         <!--添加你的 JDBC 连接信息-->
-        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userId}" password="${password}">
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.url}" userId="${jdbc.user}" password="${jdbc.password}">
             <!-- 针对oracle数据库 -->
-            <property name="remarksReporting" value="true"></property>
+            <!--<property name="remarksReporting" value="true"></property>-->
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -41,18 +30,18 @@
         </javaTypeResolver>
 
         <!--要生成的 model 模块位置-->
-        <javaModelGenerator targetPackage="pers.wzs.springmvc.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
 
         <!--要生成的 Mapper.xml 文件位置-->
-        <sqlMapGenerator targetPackage="pers.wzs.springmvc.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!--要生成的 Mapper 接口类-->
-        <javaClientGenerator targetPackage="pers.wzs.springmvc.mapper" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
@@ -62,6 +51,5 @@
         <table schema="ssm" tableName="role" domainObjectName="Role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
-
     </context>
 </generatorConfiguration>

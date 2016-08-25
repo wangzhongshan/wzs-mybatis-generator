@@ -15,10 +15,7 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 
 public class GenMain {
 	public static void main(String[] args) {
-
-		//System.out.println(GenMain.class.getResource("/generatorConfig.xml").getPath());
-
-		List<String> warnings = new ArrayList<String>();
+		List<String> warnings = new ArrayList<>();
 		boolean overwrite = true;
 		File configFile = new File(GenMain.class.getResource("/generatorConfig.xml").getFile());
 		ConfigurationParser cp = new ConfigurationParser(warnings);
